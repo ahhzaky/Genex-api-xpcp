@@ -17,7 +17,6 @@ async function buildConfig() {
       message: "What is the name of the project api?",
       default: path.basename(process.cwd()),
     },
-
     {
       type: "list",
       name: "typeAPI",
@@ -57,8 +56,13 @@ async function buildConfig() {
     default:
       break;
   }
+
   fs.writeFileSync(packagePath, JSON.stringify(config, null, 2), "utf8");
-  console.log("All Done 👍👍");
+  console.log(`
+    Runinng api 🔥🔥: npm run start
+    Running endpoint 💨💨: http://localhost:3000/
+    All Done 👍👍
+  `);
   process.exit(0);
 }
 

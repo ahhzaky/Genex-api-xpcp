@@ -14,6 +14,7 @@ const baseConfig = {
   license: "ISC",
   dependencies: {},
   devDependencies: {},
+  license: "Create by jack",
 };
 
 async function nodePackage(config) {
@@ -24,8 +25,15 @@ async function nodePackage(config) {
       message: "Description of the api project you want to make?",
       default: "Api standard",
     },
+    {
+      type: "text",
+      name: "runStartApi",
+      message: "How do you want to run the API?",
+      default: "nodemon server.js",
+    },
   ]);
   baseConfig.description = answers.descriptionAPI;
+  baseConfig.scripts.start = answers.runStartApi;
   return {
     ...config,
     ...baseConfig,
