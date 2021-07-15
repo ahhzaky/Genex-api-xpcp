@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const inquirer = require("inquirer");
+const child_process = require("child_process");
 
 const nodePackage = require("./configs/config");
 const packagePath = path.join(process.cwd(), "kage.json");
@@ -41,7 +42,13 @@ async function buildConfig() {
   switch (answers.typeDB) {
     case "MongoDB":
       config = await nodePackage(config);
-      console.log(config);
+      console.log("this is package.json => \n", config);
+      const log_install_mongoose = child_process.execSync(
+        "npm install express mongoose",
+        {
+          stdio: [0, 1, 2],
+        }
+      );
       break;
 
     //   case "Mysql":

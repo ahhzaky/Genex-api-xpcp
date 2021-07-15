@@ -12,6 +12,8 @@ const baseConfig = {
   keywords: [],
   author: "",
   license: "ISC",
+  dependencies: {},
+  devDependencies: {},
 };
 
 async function nodePackage(config) {

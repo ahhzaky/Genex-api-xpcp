@@ -1,7 +1,7 @@
 {
   "name": "myexpress",
   "version": "1.0.1",
-  "description": "Now use api",
+  "description": "Api standard",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
@@ -9,5 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {}
 }
