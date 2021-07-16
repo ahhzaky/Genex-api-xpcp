@@ -38,24 +38,31 @@ async function buildConfig() {
   // });
   config.name = answers.name;
   console.log(answers);
-  switch (answers.typeDB) {
-    case "MongoDB":
-      config = await nodePackage(config);
-      console.log("this is package.json => \n", config);
-      const log_install_mongoose = child_process.execSync(
-        "npm install express mongoose",
-        {
-          stdio: [0, 1, 2],
-        }
-      );
-      break;
-
-    //   case "Mysql":
-    //     console.log("This Mysql");
-    //     break;
-    default:
-      break;
+  if (answers.typeDB && answers.typeAPI == "only-express") {
+    switch (answers.typeDB) {
+      case "MongoDB":
+        config = await nodePackage(config);
+        console.log("this is package.json => \n", config);
+        const log_install_mongoose = child_process.execSync(
+          "npm install express mongoose",
+          {
+            stdio: [0, 1, 2],
+          }
+        );
+        break;
+      case "Mysql":
+        console.log("this mysql");
+        break;
+      default:
+        break;
+    }
+  } else {
+    console.log("lain");
   }
+
+  //   case "Mysql":
+  //     console.log("This Mysql");
+  //     break;
 
   fs.writeFileSync(packagePath, JSON.stringify(config, null, 2), "utf8");
   console.log(`

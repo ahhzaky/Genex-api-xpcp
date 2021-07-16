@@ -4,7 +4,7 @@ const path = require("path");
 const baseConfig = {
   version: "1.0.1",
   description: "",
-  main: "index.js",
+  main: "server.js",
   scripts: {
     start: "nodemon server.js",
     test: 'echo "Error: no test specified" && exit 1',
