@@ -6,6 +6,7 @@ const child_process = require("child_process");
 const nodePackage = require("./configs/config");
 const packagePath = path.join(process.cwd(), "kage.json");
 const buildDotEnv = require("./configs/dotEnv");
+const buildOnlyMongoDb = require("./configs/expressOnlyMongoDB");
 const existingConfig = fs.existsSync(packagePath);
 
 console.log(process.cwd());
@@ -89,7 +90,8 @@ if (existingConfig) {
     .then((answers) => {
       if (answers.overwrite) {
         //buildConfig();
-        buildDotEnv();
+        // buildDotEnv();
+        buildOnlyMongoDb();
       } else {
         console.log("Good BY Mr 👋");
       }

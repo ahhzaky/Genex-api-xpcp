@@ -1,3 +1,4 @@
 node_modules
 kage.json
 .env
+server.js
