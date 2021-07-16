@@ -5,6 +5,7 @@ const child_process = require("child_process");
 
 const nodePackage = require("./configs/config");
 const packagePath = path.join(process.cwd(), "kage.json");
+const buildDotEnv = require("./configs/dotEnv");
 const existingConfig = fs.existsSync(packagePath);
 
 console.log(process.cwd());
@@ -87,7 +88,8 @@ if (existingConfig) {
     ])
     .then((answers) => {
       if (answers.overwrite) {
-        buildConfig();
+        //buildConfig();
+        buildDotEnv();
       } else {
         console.log("Good BY Mr 👋");
       }
