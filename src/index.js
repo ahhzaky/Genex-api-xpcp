@@ -19,18 +19,6 @@ async function buildConfig() {
       message: "What is the name of the project api?",
       default: path.basename(process.cwd()),
     },
-    {
-      type: "list",
-      name: "typeAPI",
-      message: "Do you want the default endpoint?",
-      choices: ["only-express", "standard-endpoint"],
-    },
-    {
-      type: "list",
-      name: "typeDB",
-      message: "What database will you use?",
-      choices: ["MongoDB", "Mysql"],
-    },
   ]);
   let config = {
     name: answers.name,
@@ -39,40 +27,23 @@ async function buildConfig() {
   //   console.log(answers);
   // });
   config.name = answers.name;
-  console.log(answers);
-  if (answers.typeDB && answers.typeAPI == "only-express") {
-    switch (answers.typeDB) {
-      case "MongoDB":
-        config = await nodePackage(config);
-        console.log("this is package.json => \n", config);
-        const log_install_mongoose = child_process.execSync(
-          "npm install express mongoose",
-          {
-            stdio: [0, 1, 2],
-          }
-        );
-        break;
-      case "Mysql":
-        console.log("this mysql");
-        break;
-      default:
-        break;
-    }
-  } else {
-    console.log("lain");
-  }
+  config = await nodePackage(config);
 
-  //   case "Mysql":
-  //     console.log("This Mysql");
-  //     break;
+  //console.log("this is package.json => \n", config);
+  console.log("this npm");
+  // const log_install_mongoose = child_process.execSync(
+  //   "npm install express mongoose",
+  //   {
+  //     stdio: [0, 1, 2],
+  //   }
+  // );
 
   fs.writeFileSync(packagePath, JSON.stringify(config, null, 2), "utf8");
   console.log(`
-    Runinng api 🔥🔥: npm run start
-    Running endpoint 💨💨: http://localhost:3000/
-    All Done 👍👍
-  `);
-  process.exit(0);
+        Runinng api 🔥🔥: npm run start
+        Running endpoint 💨💨: http://localhost:3000/
+        All Done 👍👍
+      `);
 }
 
 // for check file.js
@@ -89,9 +60,12 @@ if (existingConfig) {
     ])
     .then((answers) => {
       if (answers.overwrite) {
-        //buildConfig();
-        // buildDotEnv();
+        buildConfig();
+        buildDotEnv();
         buildOnlyMongoDb();
+        //close
+
+        // process.exit(0);
       } else {
         console.log("Good BY Mr 👋");
       }
