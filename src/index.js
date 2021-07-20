@@ -29,14 +29,20 @@ async function buildConfig() {
   config.name = answers.name;
   config = await nodePackage(config);
 
-  //console.log("this is package.json => \n", config);
-  console.log("this npm");
-  // const log_install_mongoose = child_process.execSync(
-  //   "npm install express mongoose",
-  //   {
-  //     stdio: [0, 1, 2],
-  //   }
-  // );
+  console.log("this is package.json => \n", config);
+
+  const log_install_mongoose = child_process.execSync(
+    "npm install express mongoose",
+    {
+      stdio: [0, 1, 2],
+    }
+  );
+  const log_install_save = child_process.execSync(
+    "npm i --save-dev dotenv nodemon",
+    {
+      stdio: [0, 1, 2],
+    }
+  );
 
   fs.writeFileSync(packagePath, JSON.stringify(config, null, 2), "utf8");
   console.log(`

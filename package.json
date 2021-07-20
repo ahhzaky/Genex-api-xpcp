@@ -13,5 +13,9 @@
     "express": "^4.17.1",
     "inquirer": "^8.1.1",
     "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
   }
 }
